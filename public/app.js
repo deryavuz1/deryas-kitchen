@@ -20,7 +20,7 @@ function renderStepText(step) {
 
 function localImageUrl(image) {
   const filename = String(image || '').replace(/^(\.\/|\/)+/, '');
-  return /^photos\/[a-z0-9._-]+\.(jpe?g|png|webp)$/i.test(filename) ? `./${filename}` : '';
+  return /^photos\/[a-z0-9._-]+\.(jpe?g|png|webp)$/i.test(filename) ? `./${filename}?v=${encodeURIComponent(assetVersion)}` : '';
 }
 
 function art(large = false) {
@@ -30,7 +30,7 @@ function art(large = false) {
 function recipeCard(recipe) {
   const image = localImageUrl(recipe.image);
   const cover = image
-    ? `<div class="card-image"><img src="${escapeHtml(image)}" alt="Illustrative photo for ${escapeHtml(recipe.title)}" loading="lazy"></div>`
+    ? `<div class="card-image" data-photo="${escapeHtml(recipe.id)}"><img src="${escapeHtml(image)}" alt="Illustrative photo for ${escapeHtml(recipe.title)}" loading="lazy"></div>`
     : art();
   const metadata = [recipe.cookTime, recipe.yield].filter(Boolean);
   return `<a class="recipe-card" href="#/recipe/${encodeURIComponent(recipe.id)}">
@@ -109,7 +109,7 @@ function renderDetail(recipe) {
         <h1>${escapeHtml(recipe.title)}</h1><p>${escapeHtml(recipe.description)}</p>
         <div class="detail-actions"><button type="button" class="button button-coral" data-action="print">Print recipe <span aria-hidden="true">↗</span></button></div>
       </div>
-      ${image ? `<div class="detail-photo"><img src="${escapeHtml(image)}" alt="Illustrative photo for ${escapeHtml(recipe.title)}">${recipe.photoCredit && recipe.photoUrl ? `<a class="photo-credit" href="${escapeHtml(recipe.photoUrl)}" target="_blank" rel="noopener noreferrer">Photo: ${escapeHtml(recipe.photoCredit)}</a>` : ''}</div>` : art(true)}
+      ${image ? `<figure class="detail-photo" data-photo="${escapeHtml(recipe.id)}"><div class="detail-photo-frame"><img src="${escapeHtml(image)}" alt="Illustrative photo for ${escapeHtml(recipe.title)}"></div>${recipe.photoCredit && recipe.photoUrl ? `<figcaption><a class="photo-credit" href="${escapeHtml(recipe.photoUrl)}" target="_blank" rel="noopener noreferrer">Photo: ${escapeHtml(recipe.photoCredit)}</a></figcaption>` : ''}</figure>` : art(true)}
     </div>
     <div class="recipe-facts">
       ${[['Prep', recipe.prepTime], ['Rest', recipe.chillTime], ['Cook', recipe.cookTime], ['Makes', recipe.yield]].filter(([, value]) => value).map(([label, value]) => `<div><span>${label}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}
