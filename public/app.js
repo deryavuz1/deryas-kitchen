@@ -1,4 +1,5 @@
 const app = document.querySelector('#app');
+const assetVersion = new URL(document.currentScript.src).searchParams.get('v') || '1';
 const state = { recipes: [], category: 'All', query: '', sort: 'saved' };
 
 function escapeHtml(value = '') {
@@ -140,7 +141,7 @@ function render() {
 }
 
 async function loadRecipes() {
-  const response = await fetch('./recipes.json');
+  const response = await fetch(`./recipes.json?v=${encodeURIComponent(assetVersion)}`);
   if (!response.ok) throw new Error('Could not load the recipes.');
   const recipes = await response.json();
   if (!Array.isArray(recipes)) throw new Error('Recipe data is invalid.');
