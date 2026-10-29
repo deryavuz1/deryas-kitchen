@@ -7,6 +7,16 @@ function escapeHtml(value = '') {
   })[character]);
 }
 
+function renderStepText(step) {
+  // Escape the text; only **marked** segments become bold HTML.
+  return String(step).split(/(\*\*[^*]+\*\*)/g).map((part) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return '<strong>' + escapeHtml(part.slice(2, -2)) + '</strong>';
+    }
+    return escapeHtml(part);
+  }).join('');
+}
+
 function localImageUrl(image) {
   const filename = String(image || '').replace(/^(\.\/|\/)+/, '');
   return /^photos\/[a-z0-9._-]+\.(jpe?g|png|webp)$/i.test(filename) ? `./${filename}` : '';
@@ -110,7 +120,7 @@ function renderDetail(recipe) {
           : `<li><label><input type="checkbox"><span class="custom-check" aria-hidden="true"></span><span>${escapeHtml(ingredient)}</span></label></li>`).join('')}</ul>
       </section>
       <section class="method-panel"><div class="panel-heading"><h2>Method<span>.</span></h2></div>
-        <ol class="step-list">${recipe.steps.map((step, index) => `<li><span class="step-number">${String(index + 1).padStart(2, '0')}</span><p>${escapeHtml(step)}</p></li>`).join('')}</ol>
+        <ol class="step-list">${recipe.steps.map((step, index) => `<li><span class="step-number">${String(index + 1).padStart(2, '0')}</span><p>${renderStepText(step)}</p></li>`).join('')}</ol>
       </section>
     </div>
     ${recipe.notes ? `<aside class="recipe-note"><span class="note-flower">✿</span><div><span class="section-number">NOTES</span><p>${escapeHtml(recipe.notes)}</p></div></aside>` : ''}

@@ -569,3 +569,5 @@ a:focus-visible,button:focus-visible,select:focus-visible{
   .step-list p{font-size:11pt;line-height:1.5}
   .ingredient-list label{font-size:10.5pt}
 }
+
+.step-list strong{font-weight:700}
