@@ -1,0 +1,14 @@
+# Local data and credentials
+data/
+.env
+.DS_Store
+node_modules/
+
+# Original local server, kept in this folder but not used by GitHub Pages
+.env.example
+Dockerfile
+compose.yaml
+package.json
+server.mjs
+seed/
+test/
