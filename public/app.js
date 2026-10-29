@@ -59,15 +59,15 @@ function renderHome() {
   document.title = "Derya's Kitchen";
   app.innerHTML = `<div class="home-page">
     <section class="browse-intro">
-      <div><span class="eyebrow"><span class="nazar" aria-hidden="true"></span> YOUR COLLECTION</span>
+      <div><span class="eyebrow"><span class="nazar" aria-hidden="true"></span> RECIPE BOOK</span>
         <h1>Find a recipe<span>.</span></h1>
-        <p>${state.recipes.length} saved ${state.recipes.length === 1 ? 'recipe' : 'recipes'}</p>
+        <p>${state.recipes.length} ${state.recipes.length === 1 ? 'recipe' : 'recipes'}</p>
       </div>
     </section>
     <section class="collection" id="collection">
       <div class="collection-controls">
         <label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">Search recipes by name or ingredient</span><input id="recipeSearch" type="search" placeholder="Search by recipe or ingredient" value="${escapeHtml(state.query)}"></label>
-        <label class="sort-box"><span>Sort</span><select id="recipeSort"><option value="saved" ${state.sort === 'saved' ? 'selected' : ''}>Saved order</option><option value="az" ${state.sort === 'az' ? 'selected' : ''}>A to Z</option></select></label>
+        <label class="sort-box"><span>Sort</span><select id="recipeSort"><option value="saved" ${state.sort === 'saved' ? 'selected' : ''}>Default order</option><option value="az" ${state.sort === 'az' ? 'selected' : ''}>A to Z</option></select></label>
       </div>
       <div class="category-list" role="group" aria-label="Filter by category">${categories.map((category) => {
         const count = category === 'All' ? state.recipes.length : state.recipes.filter((recipe) => recipe.category === category).length;
