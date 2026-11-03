@@ -23,6 +23,27 @@ function localImageUrl(image) {
   return /^photos\/[a-z0-9._-]+\.(jpe?g|png|webp)$/i.test(filename) ? `./${filename}?v=${encodeURIComponent(assetVersion)}` : '';
 }
 
+function safeExternalUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' ? url.href : '';
+  } catch {
+    return '';
+  }
+}
+
+function photoCaption(recipe) {
+  const photoUrl = safeExternalUrl(recipe.photoUrl);
+  if (!photoUrl || !recipe.photoCredit) return '';
+  const licenseUrl = safeExternalUrl(recipe.photoLicenseUrl);
+  const context = recipe.photoContext ? `${escapeHtml(recipe.photoContext)} · ` : '';
+  const changes = recipe.photoChanges ? ` · ${escapeHtml(recipe.photoChanges)}` : '';
+  const license = licenseUrl && recipe.photoLicense
+    ? ` · <a class="photo-license" href="${escapeHtml(licenseUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(recipe.photoLicense)}</a>`
+    : '';
+  return `<figcaption>${context}<a class="photo-credit" href="${escapeHtml(photoUrl)}" target="_blank" rel="noopener noreferrer">Photo: ${escapeHtml(recipe.photoCredit)}</a>${changes}${license}</figcaption>`;
+}
+
 function art(large = false) {
   return `<div class="food-art ${large ? 'large' : ''}" aria-hidden="true"></div>`;
 }
@@ -101,15 +122,16 @@ function renderHome() {
 
 function renderDetail(recipe) {
   const image = localImageUrl(recipe.image);
+  const sourceUrl = safeExternalUrl(recipe.sourceUrl);
   document.title = `${recipe.title} | Derya's Kitchen`;
   app.innerHTML = `<article class="detail-page">
     <a class="back-link" href="#/">← All recipes</a>
     <div class="detail-hero">
       <div class="detail-intro"><span class="eyebrow"><span class="eyebrow-flower">✿</span> ${escapeHtml(recipe.category.toUpperCase())} / RECIPE ${String(state.recipes.indexOf(recipe) + 1).padStart(2, '0')}</span>
         <h1>${escapeHtml(recipe.title)}</h1><p>${escapeHtml(recipe.description)}</p>
-        <div class="detail-actions"><button type="button" class="button button-coral" data-action="print">Print recipe <span aria-hidden="true">↗</span></button></div>
+        <div class="detail-actions"><button type="button" class="button button-coral" data-action="print">Print recipe <span aria-hidden="true">↗</span></button>${sourceUrl ? `<a class="source-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(recipe.sourceLabel || 'Original recipe')} <span aria-hidden="true">↗</span></a>` : ''}</div>
       </div>
-      ${image ? `<figure class="detail-photo" data-photo="${escapeHtml(recipe.id)}"><div class="detail-photo-frame"><img src="${escapeHtml(image)}" alt="${escapeHtml(recipe.photoAlt || ('Illustrative photo for ' + recipe.title))}"></div>${recipe.photoCredit && recipe.photoUrl ? `<figcaption><a class="photo-credit" href="${escapeHtml(recipe.photoUrl)}" target="_blank" rel="noopener noreferrer">Photo: ${escapeHtml(recipe.photoCredit)}</a></figcaption>` : ''}</figure>` : art(true)}
+      ${image ? `<figure class="detail-photo" data-photo="${escapeHtml(recipe.id)}"><div class="detail-photo-frame"><img src="${escapeHtml(image)}" alt="${escapeHtml(recipe.photoAlt || ('Illustrative photo for ' + recipe.title))}"></div>${photoCaption(recipe)}</figure>` : art(true)}
     </div>
     <div class="recipe-facts">
       ${[['Prep', recipe.prepTime], ['Rest', recipe.chillTime], ['Cook', recipe.cookTime], ['Makes', recipe.yield]].filter(([, value]) => value).map(([label, value]) => `<div><span>${label}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}

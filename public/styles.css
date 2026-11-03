@@ -667,10 +667,14 @@ a:focus-visible,button:focus-visible,select:focus-visible{
   text-decoration:underline;
   text-underline-offset:2px;
 }
+.photo-license{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
 .card-image[data-photo="thick-chocolate-chip-cookies"] img,
 .detail-photo[data-photo="thick-chocolate-chip-cookies"] img{object-position:center 70%}
 .card-image[data-photo="sharlotka"] img,
 .detail-photo[data-photo="sharlotka"] img{object-position:center 57%}
+.detail-actions{align-items:center}
+.source-link{color:var(--teal);font:700 15px var(--serif);padding:8px 4px;text-decoration:underline;text-underline-offset:4px}
+.source-link:hover{color:var(--cobalt)}
 @media(max-width:900px){
   .detail-hero{grid-template-columns:1fr}
   .detail-photo{
