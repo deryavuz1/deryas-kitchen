@@ -147,5 +147,39 @@
     "notes": "The original cake uses only eggs, sugar, flour, and apples. Cinnamon or vanilla can add flavor if you like. Room-temperature eggs and gentle folding help keep the sponge light.",
     "createdAt": "2026-10-29T00:00:00.000Z",
     "updatedAt": "2026-10-29T00:00:00.000Z"
+  },
+  {
+    "id": "carrot-beet-celery-salad",
+    "title": "Carrot, beet & celery salad",
+    "description": "A crisp salad with dill, walnuts, garlic, and a lemon and olive oil dressing.",
+    "category": "Salad",
+    "yield": "4–6 servings",
+    "prepTime": "About 20 min",
+    "chillTime": "",
+    "cookTime": "",
+    "image": "photos/carrot-beet-celery-salad.jpg",
+    "photoCredit": "Kemal Can",
+    "photoUrl": "https://www.pexels.com/photo/delicious-shredded-red-beetroot-salad-in-copper-bowl-37322778/",
+    "ingredients": [
+      "4 carrots, julienned",
+      "2 beets, julienned",
+      "5 celery ribs with leaves (or about 1/2 a head), chopped",
+      "1 bunch fresh dill, chopped",
+      "A handful of chopped walnuts",
+      "2 garlic cloves",
+      "## Dressing",
+      "Juice of 2 fresh lemons",
+      "1/3 cup olive oil",
+      "Salt and black pepper, to taste"
+    ],
+    "steps": [
+      "Put the **carrots**, **beets**, chopped **celery** and its leaves, **dill**, and **walnuts** in a large bowl. Finely chop or crush the **garlic** and add it.",
+      "Whisk the **lemon juice** and **olive oil** together. Season with **salt** and **black pepper**.",
+      "Pour the dressing over the salad and toss until everything is coated. Taste and adjust the seasoning, then serve."
+    ],
+    "notes": "",
+    "createdAt": "2026-11-03T00:00:00.000Z",
+    "updatedAt": "2026-11-03T00:00:00.000Z",
+    "photoAlt": "Illustrative photo of shredded beet salad in a copper bowl"
   }
 ]
