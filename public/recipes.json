@@ -263,5 +263,43 @@
     "notes": "Food processor option: Pulse the tomatoes, onion, peppers, and garlic until finely chopped. Drain them in a colander, then mix with the parsley and remaining ingredients before chilling.",
     "createdAt": "2026-11-03T00:00:00.000Z",
     "updatedAt": "2026-11-03T00:00:00.000Z"
+  },
+  {
+    "id": "poncik-pogaca",
+    "title": "Ponçik poğaça",
+    "description": "Soft Turkish rolls made with yogurt and baked until golden.",
+    "category": "Savory bake",
+    "yield": "10–12 servings",
+    "prepTime": "20 min",
+    "chillTime": "About 1 hour to rise",
+    "cookTime": "About 25 min",
+    "image": "photos/poncik-pogaca.jpg",
+    "photoCredit": "Rukiye Demir",
+    "photoUrl": "https://www.pexels.com/photo/freshly-baked-bread-in-a-bowl-10976467/",
+    "photoAlt": "Illustrative photo of round Turkish poğaça in a basket",
+    "photoContext": "Illustrative photo",
+    "sourceLabel": "Original recipe: Münevver'in mutfağı",
+    "sourceUrl": "https://www.nefisyemektarifleri.com/poncik-pogaca-pastane-lezzetinde/",
+    "ingredients": [
+      "200 mL lukewarm water",
+      "1 1/2 tbsp instant yeast",
+      "2 tbsp sugar",
+      "1 level tbsp salt",
+      "100 mL room-temperature yogurt",
+      "Vegetable oil, to one finger-width below the rim of a 200 mL glass",
+      "2 eggs, at room temperature (reserve 1 yolk for brushing)",
+      "All-purpose flour, as needed for a soft dough that does not stick to your hands"
+    ],
+    "steps": [
+      "Put the **lukewarm water** in a mixing bowl. Add the **instant yeast** and **sugar**, then stir by hand.",
+      "Reserve one **egg yolk** for brushing. Add both **egg whites** and the other **egg yolk** to the bowl with the **yogurt**, **vegetable oil**, and **salt**. Mix well.",
+      "Add the **flour** gradually, mixing until you have a soft dough that does not stick to your hands.",
+      "Cover the dough and let it rise until it doubles in size, about 1 hour.",
+      "Take egg-sized pieces of dough and shape them into rounds. Place them on a parchment-lined baking tray and brush with the reserved **egg yolk**.",
+      "Put the tray in a cold oven. Set the oven to 170°C (340°F) and bake until the tops and bottoms are golden, about 25 minutes."
+    ],
+    "notes": "",
+    "createdAt": "2026-11-08T00:00:00.000Z",
+    "updatedAt": "2026-11-08T00:00:00.000Z"
   }
 ]
